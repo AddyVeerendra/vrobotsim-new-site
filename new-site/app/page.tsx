@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter} from "@/components/site-footer"
@@ -19,8 +20,8 @@ export default function HomePage() {
                 Virtual Robot Simulator is a platform that allows students to program and test FIRST Tech Challenge robots
                 without the need for physical hardware.
               </p>
-              <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white">
-                Learn More
+              <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white" asChild>
+                <Link href="/get-vrs">Learn More</Link>
               </Button>
             </div>
           </div>
@@ -77,8 +78,8 @@ export default function HomePage() {
                   Virtual Robot Simulator is a simple, easy-to-use platform that allows FTC teams to program and test
                   their robots without access to physical hardware. Learn how to use VRS with this quickstart!
                 </p>
-                <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white">
-                  Get Started
+                <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white" asChild>
+                  <Link href="/get-vrs">Get Started</Link>
                 </Button>
               </div>
             </div>
@@ -97,8 +98,8 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="text-center lg:text-right">
-                <Button size="lg" variant="secondary" className="bg-white text-teal-500 hover:bg-gray-100">
-                  Get VRS
+                <Button size="lg" variant="secondary" className="bg-white text-teal-500 hover:bg-gray-100" asChild>
+                  <Link href="/get-vrs">Get VRS</Link>
                 </Button>
               </div>
             </div>

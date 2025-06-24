@@ -74,33 +74,26 @@ export function MainNav() {
           >
             Quickstart
           </Link>
-          <Link href="/get-vrs" className="text-gray-700 hover:text-teal-500 transition-colors">
+          <Link
+              href="/get-vrs"
+              className={cn(
+                  "font-medium transition-colors",
+                  pathname === "/get-vrs" ? "text-teal-500" : "text-gray-700 hover:text-teal-500",
+              )}
+          >
             Get VRS
           </Link>
 
-          {/* Tutorials Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                  variant="ghost"
-                  className="p-0 h-auto font-normal flex items-center gap-1 text-gray-700 hover:text-teal-500 transition-colors"
-              >
-                <span>Tutorials</span>
-                <ChevronDown className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="center">
-              <DropdownMenuItem asChild>
-                <Link href="/tutorials">Tutorials</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/intro-to-motor-power">Intro to Motor Power</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/learn-to-program">Learn to program a robot with VRS</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {/* Tutorials - Now a direct link */}
+          <Link
+              href="/tutorials"
+              className={cn(
+                  "font-medium transition-colors",
+                  pathname === "/tutorials" ? "text-teal-500" : "text-gray-700 hover:text-teal-500",
+              )}
+          >
+            Tutorials
+          </Link>
 
           {/* About Dropdown */}
           <DropdownMenu>
@@ -134,7 +127,7 @@ export function MainNav() {
           </Link>
         </nav>
 
-        {/* Mobile Navigation remains the same */}
+        {/* Mobile Navigation */}
         <div className="md:hidden">
           <Button variant="ghost" size="icon" onClick={() => setOpen(!open)}>
             <Menu className="h-6 w-6" />
@@ -156,20 +149,9 @@ export function MainNav() {
               <Link href="/get-vrs" className="text-lg">
                 Get VRS
               </Link>
-              <div className="py-2 border-t border-gray-100">
-                <p className="text-sm text-gray-500 mb-2">Tutorials</p>
-                <div className="flex flex-col space-y-2 pl-2">
-                  <Link href="/tutorials" className="text-lg">
-                    Tutorials
-                  </Link>
-                  <Link href="/intro-to-motor-power" className="text-lg">
-                    Intro to Motor Power
-                  </Link>
-                  <Link href="/learn-to-program" className="text-lg">
-                    Learn to program a robot with VRS
-                  </Link>
-                </div>
-              </div>
+              <Link href="/tutorials" className="text-lg">
+                Tutorials
+              </Link>
               <div className="py-2 border-t border-gray-100">
                 <p className="text-sm text-gray-500 mb-2">About</p>
                 <div className="flex flex-col space-y-2 pl-2">

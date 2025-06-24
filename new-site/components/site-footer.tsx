@@ -25,31 +25,6 @@ export function SiteFooter() {
             </div>
           </div>
 
-          {/* Recent Posts Column */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Recent Posts</h3>
-            <div className="space-y-4">
-              <div>
-                <Link href="/vrs-guidebook" className="text-gray-300 hover:text-white transition-colors">
-                  VRS Guidebook
-                </Link>
-                <p className="text-sm text-gray-400">October 13th, 2024</p>
-              </div>
-              <div>
-                <Link href="/4-games" className="text-gray-300 hover:text-white transition-colors">
-                  4 Games
-                </Link>
-                <p className="text-sm text-gray-400">September 22nd, 2024</p>
-              </div>
-              <div>
-                <Link href="/get-vrs" className="text-gray-300 hover:text-white transition-colors">
-                  Get VRS
-                </Link>
-                <p className="text-sm text-gray-400">July 18th, 2024</p>
-              </div>
-            </div>
-          </div>
-
           {/* Social Media Column */}
           <div>
             <h3 className="text-xl font-bold mb-4">Social Media</h3>
