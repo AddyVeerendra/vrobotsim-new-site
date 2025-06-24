@@ -26,7 +26,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Beginner Guides Section */}
         <section className="py-16 px-4 bg-gray-50">
           <div className="container">
             <div className="text-center mb-12">
@@ -86,7 +85,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Community Section */}
         <section className="py-16 px-4 bg-teal-500 text-white">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
