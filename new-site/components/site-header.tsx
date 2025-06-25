@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Mail, Github, Youtube, ChevronDown, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -35,16 +36,15 @@ export function TopHeader() {
 
 export function SiteLogo() {
   return (
-      <div className="flex items-center gap-4">
-        <div className="flex items-center">
-          <div className="text-2xl font-bold">
-            <span className="text-blue-500">V</span>
-            <span className="bg-orange-500 text-white px-1 rounded">R</span>
-            <span className="text-red-500">S</span>
-          </div>
-        </div>
-        <div className="text-sm text-gray-600 hidden md:block">Program FTC robots without the hardware</div>
-      </div>
+      <Link href="/">
+        <Image
+            src="/vrs-logo.png"
+            alt="Virtual Robot Simulator Logo"
+            width={197}
+            height={100}
+            priority
+        />
+      </Link>
   )
 }
 
@@ -123,7 +123,7 @@ export function MainNav() {
               href="https://sim.vrobotsim.online/homepage.html"
               className="text-gray-700 hover:text-teal-500 transition-colors"
           >
-            In The Deep
+            Into The Deep
           </Link>
         </nav>
 
