@@ -5,18 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import {
-    Play,
-    BookOpen,
-    Code,
-    ExternalLink,
-    Youtube,
-    FileText,
-    Gamepad2,
-    Coffee,
-    Users,
-    GraduationCap,
-} from "lucide-react"
+import { Play, BookOpen, Code, ExternalLink, Youtube, FileText, Gamepad2, Coffee, GraduationCap } from "lucide-react"
 
 const tutorialCategories = [
     {
@@ -26,13 +15,6 @@ const tutorialCategories = [
         icon: GraduationCap,
         color: "from-green-500 to-emerald-600",
         tutorials: [
-            {
-                title: "Beginner Lessons",
-                description: "Structured curriculum for new learners",
-                type: "document",
-                url: "https://docs.google.com/document/d/1TY5vdmRcBj-pouBRHXvKbSxYIFFggRkNfM5WWo6z_ds/edit",
-                difficulty: "Beginner",
-            },
             {
                 title: "Basic Introduction to Programming",
                 description: "Learn the fundamentals of programming with VRS",
@@ -66,6 +48,27 @@ const tutorialCategories = [
                 description: "Understanding and using while loops effectively",
                 type: "video",
                 url: "https://youtu.be/FNvfNwPqAv8",
+                difficulty: "Beginner",
+            },
+            {
+                title: "Intro to Motor Power",
+                description: "Learn how to make your robot move, turn, and strafe",
+                type: "webpage",
+                url: "/motor-power-intro",
+                difficulty: "Beginner",
+            },
+            {
+                title: "Beginner Lessons",
+                description: "Structured curriculum for new learners",
+                type: "document",
+                url: "https://docs.google.com/document/d/1TY5vdmRcBj-pouBRHXvKbSxYIFFggRkNfM5WWo6z_ds/edit",
+                difficulty: "Beginner",
+            },
+            {
+                title: "Select Viewport Angle",
+                description: "Choose the best camera angle for your needs",
+                type: "document",
+                url: "https://docs.google.com/document/d/17-F7AO3lGq9plMAvB0dbxmah_dQkAgnY4C7yzEY91ys/edit?usp=sharing",
                 difficulty: "Beginner",
             },
         ],
@@ -142,15 +145,6 @@ const tutorialCategories = [
                 url: "https://docs.google.com/document/d/1F8igQRS3wf-C6RCM0acAy5g5ECw_caGUC0G17aG7XS0/edit",
                 difficulty: "Advanced",
             },
-        ],
-    },
-    {
-        id: "specialized-tools",
-        title: "Specialized Tools",
-        description: "Robot Importer and advanced features",
-        icon: Coffee,
-        color: "from-orange-500 to-red-600",
-        tutorials: [
             {
                 title: "Using Robot Importer",
                 description: "Import and customize your own robots",
@@ -158,31 +152,33 @@ const tutorialCategories = [
                 url: "https://www.youtube.com/playlist?list=PL2ovNdvJY8L7xD1_MVA-qWldRTc-XjRT7",
                 difficulty: "Advanced",
             },
-            {
-                title: "Select Viewport Angle",
-                description: "Choose the best camera angle for your needs",
-                type: "document",
-                url: "https://docs.google.com/document/d/17-F7AO3lGq9plMAvB0dbxmah_dQkAgnY4C7yzEY91ys/edit?usp=sharing",
-                difficulty: "Beginner",
-            },
         ],
     },
     {
-        id: "curriculum",
-        title: "Curriculum & Teaching",
-        description: "Resources for educators and structured learning",
-        icon: Users,
-        color: "from-teal-500 to-green-600",
-        tutorials: [
-            {
-                title: "VRS Workshop Teacher Schedule",
-                description: "Weekly schedule and guide for teachers",
-                type: "document",
-                url: "#",
-                difficulty: "Teacher",
-            },
-        ],
+        id: "specialized-tools",
+        title: "Specialized Tools",
+        description: "Advanced features and tools",
+        icon: Coffee,
+        color: "from-orange-500 to-red-600",
+        tutorials: [],
     },
+    // Commented out Curriculum & Teaching section
+    // {
+    //   id: "curriculum",
+    //   title: "Curriculum & Teaching",
+    //   description: "Resources for educators and structured learning",
+    //   icon: Users,
+    //   color: "from-teal-500 to-green-600",
+    //   tutorials: [
+    //     {
+    //       title: "VRS Workshop Teacher Schedule",
+    //       description: "Weekly schedule and guide for teachers",
+    //       type: "document",
+    //       url: "#",
+    //       difficulty: "Teacher",
+    //     },
+    //   ],
+    // },
 ]
 
 const featuredPlaylists = [
@@ -204,8 +200,10 @@ export function TutorialsContent() {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
     const filteredCategories = tutorialCategories.filter((category) => {
-        return !(selectedCategory && category.id !== selectedCategory);
-
+        if (selectedCategory && category.id !== selectedCategory) return false
+        // Filter out empty categories
+        if (category.tutorials.length === 0) return false
+        return true
     })
 
     const getTypeIcon = (type: string) => {
@@ -216,6 +214,8 @@ export function TutorialsContent() {
                 return <Youtube className="h-4 w-4" />
             case "document":
                 return <FileText className="h-4 w-4" />
+            case "webpage":
+                return <BookOpen className="h-4 w-4" />
             default:
                 return <BookOpen className="h-4 w-4" />
         }
@@ -236,11 +236,32 @@ export function TutorialsContent() {
         }
     }
 
+    const getButtonText = (type: string) => {
+        switch (type) {
+            case "video":
+                return "Watch"
+            case "playlist":
+                return "View Playlist"
+            case "webpage":
+                return "Read Tutorial"
+            case "document":
+                return "Open"
+            default:
+                return "View"
+        }
+    }
+
     return (
         <div className="py-8">
             {/* Hero Section */}
             <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 container text-center">VRS Tutorials</h1>
+                <div className="container text-center">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4">VRS Tutorials</h1>
+                    <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                        Master Virtual Robot Simulator with our comprehensive collection of tutorials, from beginner basics to
+                        advanced Java programming. Learn at your own pace with video lessons, documentation, and hands-on examples.
+                    </p>
+                </div>
             </section>
 
             {/* Featured Playlists */}
@@ -283,16 +304,18 @@ export function TutorialsContent() {
                         >
                             All Categories
                         </Button>
-                        {tutorialCategories.map((category) => (
-                            <Button
-                                key={category.id}
-                                variant={selectedCategory === category.id ? "default" : "outline"}
-                                onClick={() => setSelectedCategory(category.id)}
-                                size="sm"
-                            >
-                                {category.title}
-                            </Button>
-                        ))}
+                        {tutorialCategories
+                            .filter((category) => category.tutorials.length > 0)
+                            .map((category) => (
+                                <Button
+                                    key={category.id}
+                                    variant={selectedCategory === category.id ? "default" : "outline"}
+                                    onClick={() => setSelectedCategory(category.id)}
+                                    size="sm"
+                                >
+                                    {category.title}
+                                </Button>
+                            ))}
                     </div>
 
                     <div className="space-y-12">
@@ -329,13 +352,17 @@ export function TutorialsContent() {
                                                 <CardContent className="pt-0">
                                                     <p className="text-gray-600 text-sm mb-4">{tutorial.description}</p>
                                                     <Button asChild size="sm" className="w-full">
-                                                        <Link href={tutorial.url} target="_blank" rel="noopener noreferrer">
-                                                            <ExternalLink className="h-4 w-4 mr-2" />
-                                                            {tutorial.type === "video"
-                                                                ? "Watch"
-                                                                : tutorial.type === "playlist"
-                                                                    ? "View Playlist"
-                                                                    : "Open"}
+                                                        <Link
+                                                            href={tutorial.url}
+                                                            target={tutorial.type === "webpage" ? "_self" : "_blank"}
+                                                            rel={tutorial.type === "webpage" ? "" : "noopener noreferrer"}
+                                                        >
+                                                            {tutorial.type === "webpage" ? (
+                                                                <BookOpen className="h-4 w-4 mr-2" />
+                                                            ) : (
+                                                                <ExternalLink className="h-4 w-4 mr-2" />
+                                                            )}
+                                                            {getButtonText(tutorial.type)}
                                                         </Link>
                                                     </Button>
                                                 </CardContent>

@@ -40,8 +40,8 @@ export function SiteLogo() {
         <Image
             src="/vrs-logo.png"
             alt="Virtual Robot Simulator Logo"
-            width={197}
-            height={100}
+            width={98.5}
+            height={50}
             priority
         />
       </Link>
@@ -93,6 +93,16 @@ export function MainNav() {
               )}
           >
             Tutorials
+          </Link>
+
+          <Link
+              href="/news"
+              className={cn(
+                  "font-medium transition-colors",
+                  pathname === "/news-section" ? "text-teal-500" : "text-gray-700 hover:text-teal-500",
+              )}
+          >
+            News
           </Link>
 
           {/* About Dropdown */}
@@ -151,6 +161,9 @@ export function MainNav() {
               </Link>
               <Link href="/tutorials" className="text-lg">
                 Tutorials
+              </Link>
+              <Link href="/news-section" className="text-lg">
+                News
               </Link>
               <div className="py-2 border-t border-gray-100">
                 <p className="text-sm text-gray-500 mb-2">About</p>

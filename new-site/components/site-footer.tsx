@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Github, Linkedin, Youtube } from "lucide-react"
+import { Mail, Github, Youtube } from "lucide-react"
 
 export function SiteFooter() {
   return (
@@ -20,7 +20,9 @@ export function SiteFooter() {
               </div>
               <div className="flex items-center gap-2">
                 <Github className="h-4 w-4" />
-                <span className="text-gray-300">https://github.com/Virtual-FTC </span>
+                <Link href="https://github.com/Virtual-FTC" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:underline">
+                  https://github.com/Virtual-FTC
+                </Link>
               </div>
             </div>
           </div>
@@ -43,9 +45,8 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400">© Copyright 2025 Virtual Robot Simulator. Powered by Next.js.</p>
+          <p className="text-gray-400">© Copyright 2025. Powered by Next.js.</p>
         </div>
       </div>
     </footer>

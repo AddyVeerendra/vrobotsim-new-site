@@ -1,9 +1,9 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter} from "@/components/site-footer"
-import { GuideCard } from "@/components/guide-card"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { GuideCard } from "@/components/guide-card";
 
 export default function HomePage() {
   return (
@@ -11,16 +11,31 @@ export default function HomePage() {
       <SiteHeader />
 
       <main className="flex-1">
-        <section className="relative h-[600px] bg-gradient-to-r from-blue-600 to-purple-700">
+        <section
+          className="relative h-[600px]"
+          style={{
+            backgroundImage: "url('/TeamBackground.jpeg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundBlendMode: "overlay",
+          }}
+        >
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           <div className="relative z-10 h-full flex items-center justify-center">
             <div className="text-center text-white max-w-4xl px-4">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">VIRTUAL ROBOT SIMULATOR</h1>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                VIRTUAL ROBOT SIMULATOR
+              </h1>
               <p className="text-lg md:text-xl mb-8 leading-relaxed max-w-3xl mx-auto">
-                Virtual Robot Simulator is a platform that allows students to program and test FIRST Tech Challenge robots
-                without the need for physical hardware.
+                Virtual Robot Simulator is a platform that allows students to
+                program and test FIRST Tech Challenge robots without the need
+                for physical hardware.
               </p>
-              <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white" asChild>
+              <Button
+                size="lg"
+                className="bg-teal-500 hover:bg-teal-600 text-white"
+                asChild
+              >
                 <Link href="/get-vrs">Learn More</Link>
               </Button>
             </div>
@@ -30,9 +45,12 @@ export default function HomePage() {
         <section className="py-16 px-4 bg-gray-50">
           <div className="container">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Beginner Guides</h2>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Beginner Guides
+              </h2>
               <p className="text-gray-600 text-lg">
-                Here are some guides that beginners can use for reference after getting VRS.
+                Here are some guides that beginners can use for reference after
+                getting VRS.
               </p>
             </div>
 
@@ -52,8 +70,8 @@ export default function HomePage() {
 
               <GuideCard
                 title="Learn to program a robot with VRS"
-                description="The most basic introduction to Virtual Robot Simulator!"
-                href="/learn-to-program-a-robot-with-vrs"
+                description="Find tutorials to help you with programming your robot in VRS."
+                href="/tutorials"
               />
             </div>
           </div>
@@ -73,12 +91,20 @@ export default function HomePage() {
                 />
               </div>
               <div className="order-1 lg:order-2">
-                <h2 className="text-4xl font-bold text-gray-800 mb-6">VRS Quickstart</h2>
+                <h2 className="text-4xl font-bold text-gray-800 mb-6">
+                  VRS Quickstart
+                </h2>
                 <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                  Virtual Robot Simulator is a simple, easy-to-use platform that allows FTC teams to program and test
-                  their robots without access to physical hardware. Learn how to use VRS with this quickstart!
+                  Virtual Robot Simulator is a simple, easy-to-use platform that
+                  allows FTC teams to program and test their robots without
+                  access to physical hardware. Learn how to use VRS with this
+                  quickstart!
                 </p>
-                <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white" asChild>
+                <Button
+                  size="lg"
+                  className="bg-teal-500 hover:bg-teal-600 text-white"
+                  asChild
+                >
                   <Link href="/get-vrs">Get Started</Link>
                 </Button>
               </div>
@@ -90,15 +116,24 @@ export default function HomePage() {
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
               <div className="lg:col-span-2">
-                <h2 className="text-4xl font-bold mb-4">Join the community of 32,000+ users!</h2>
+                <h2 className="text-4xl font-bold mb-4">
+                  Join the community of 32,000+ users!
+                </h2>
                 <p className="text-lg leading-relaxed">
-                  Write programs in both FTC Blocks and Java, upload custom robots with accurate mechanics, and enjoy a
-                  regularly updated accurate development environment, realistic physics simulations, lessons,
-                  challenges, and hints, and complete documentation!
+                  Write programs in both FTC Blocks and Java, upload custom
+                  robots with accurate mechanics, and enjoy a regularly updated
+                  accurate development environment, realistic physics
+                  simulations, lessons, challenges, and hints, and complete
+                  documentation!
                 </p>
               </div>
               <div className="text-center lg:text-right">
-                <Button size="lg" variant="secondary" className="bg-white text-teal-500 hover:bg-gray-100" asChild>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="bg-white text-teal-500 hover:bg-gray-100"
+                  asChild
+                >
                   <Link href="/get-vrs">Get VRS</Link>
                 </Button>
               </div>
@@ -109,5 +144,5 @@ export default function HomePage() {
 
       <SiteFooter />
     </div>
-  )
+  );
 }
